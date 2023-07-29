@@ -2,6 +2,22 @@
 
 ## Client
 
+install deps
+
+- yarn
+
+run
+
+- yarn dev
+
 ## Server
 
-## Socker Server
+install deps
+
+- yarn
+
+run
+
+- yarn start
+
+## Socket Server
