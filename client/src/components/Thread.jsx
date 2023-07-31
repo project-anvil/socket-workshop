@@ -4,7 +4,7 @@ import { useChannelMessages } from "../hooks";
 import { CreateMessageForm } from "./CreateMessageForm";
 import "./thread.css";
 
-export const Thread = ({ thread }) => {
+export const Thread = ({ thread, socket }) => {
   const { data: messages } = useChannelMessages(thread.id);
   const [allMessages, setAllMessages] = useState(messages);
 
@@ -12,8 +12,17 @@ export const Thread = ({ thread }) => {
     setAllMessages(messages);
   }, [messages]);
 
+  useEffect(() => {
+    socket?.on("receive-message", (newMessage) => {
+      setAllMessages([...allMessages, newMessage]);
+    });
+  }, [socket, allMessages]);
+
   const handleSuccessfulMessage = (newMessage) => {
     setAllMessages([...allMessages, newMessage]);
+
+    console.log(socket.id);
+    socket.emit("new-message", newMessage);
   };
 
   return (

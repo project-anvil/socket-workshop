@@ -1,0 +1,14 @@
+{
+  "name": "socket-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ramiro Beltran",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "socket.io": "^4.7.1"
+  }
+}
